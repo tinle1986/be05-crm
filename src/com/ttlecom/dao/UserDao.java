@@ -23,21 +23,19 @@ public class UserDao {
 			statement.setString(1, email);
 			ResultSet res = statement.executeQuery();
 
-			res.next();
-			if (res == null)
+			if (res.next()) {
+				user.setId(res.getInt("id"));
+				user.setFullname(res.getString("fullname"));
+				user.setEmail(res.getString("email"));
+				user.setRoleId(res.getInt("role_id"));
+				user.setPassword(res.getString("password"));
+
+				conn.close();
+				return user;
+			} else {
+				conn.close();
 				return null;
-
-			user.setId(res.getInt("id"));
-			user.setFullname(res.getString("fullname"));
-			user.setEmail(res.getString("email"));
-			user.setRoleId(res.getInt("role_id"));
-			user.setPassword(res.getString("password"));
-
-			conn.close();
-			return user;
-
-		} catch (SQLException ex) {
-			ex.printStackTrace();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
