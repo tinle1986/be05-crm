@@ -61,7 +61,9 @@ public class LoginServlet extends HttpServlet {
 		} else if (userGetFromDb.getPassword().equals(password)) {
 			HttpSession session = req.getSession();
 			session.setAttribute("LOGIN_USER", userGetFromDb.getEmail());
-			session.setMaxInactiveInterval(20);
+			session.setAttribute("ROLE_ID_USER", userGetFromDb.getRoleId());
+			session.setAttribute("FULLNAME_USER", userGetFromDb.getFullname());
+			session.setMaxInactiveInterval(60*60);
 			resp.sendRedirect(contextPath + "/dashboard");
 		} else {
 			req.setAttribute("incorrect", "Password is incorrect!");
