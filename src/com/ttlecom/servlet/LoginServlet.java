@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "loginServlet", urlPatterns = {UrlConstant.LOGIN_URL})
+@WebServlet(name = "loginServlet", urlPatterns = {UrlConstant.LOGIN_URL, UrlConstant.LOGOUT_URL})
 public class LoginServlet extends HttpServlet {
 
 	private UserDao userDao;
@@ -31,7 +31,15 @@ public class LoginServlet extends HttpServlet {
 		HttpSession userSession = req.getSession();
 
 		if (userSession.getAttribute("LOGIN_USER") != null) {
-			resp.sendRedirect(req.getContextPath() + "/dashboard");
+			switch (servletPath) {
+				case UrlConstant.LOGOUT_URL:
+					userSession.invalidate();
+					resp.sendRedirect(req.getContextPath() + "/login");
+					break;
+				default:
+					resp.sendRedirect(req.getContextPath() + "/dashboard");
+					break;
+			}
 		} else {
 			switch (servletPath) {
 				case UrlConstant.LOGIN_URL:
@@ -63,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("LOGIN_USER", userGetFromDb.getEmail());
 			session.setAttribute("ROLE_ID_USER", userGetFromDb.getRoleId());
 			session.setAttribute("FULLNAME_USER", userGetFromDb.getFullname());
-			session.setMaxInactiveInterval(60*60);
+			session.setMaxInactiveInterval(60 * 60);
 			resp.sendRedirect(contextPath + "/dashboard");
 		} else {
 			req.setAttribute("incorrect", "Password is incorrect!");

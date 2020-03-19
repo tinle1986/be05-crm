@@ -12,11 +12,11 @@ public class UrlConstant {
 	public static final String ROLE_EDIT_URL = "/role/edit";
 	public static final String ROLE_DELETE_URL = "/role/delete";
 
-	public static final String TASK_URL = "/task";
-	public static final String TASK_ADD_URL = "/task/add";
-	public static final String TASK_EDIT_URL = "/task/edit";
-	public static final String TASK_DELETE_URL = "/task/delete";
-	public static final String TASK_VIEW_URL = "/task/view";
+//	public static final String TASK_URL = "/task";
+//	public static final String TASK_ADD_URL = "/task/add";
+//	public static final String TASK_EDIT_URL = "/task/edit";
+//	public static final String TASK_DELETE_URL = "/task/delete";
+//	public static final String TASK_VIEW_URL = "/task/view";
 
 	public static final String JOB_URL = "/job";
 	public static final String JOB_ADD_URL = "/job/add";
@@ -32,4 +32,6 @@ public class UrlConstant {
 	public static final String BLANK_URL = "/blank";
 
 	public static final String LOGIN_URL = "/login";
+	public static final String LOGOUT_URL = "/logout";
+
 }

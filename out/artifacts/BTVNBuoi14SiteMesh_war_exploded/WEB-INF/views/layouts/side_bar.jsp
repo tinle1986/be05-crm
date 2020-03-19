@@ -62,7 +62,7 @@
 			</li>
 			<% if (isLogin) { %>
 			<li>
-				<a href="<%=contextPath%>/error" class="waves-effect"><i class="fa fa-sign-out fa-fw"
+				<a href="<%=contextPath%>/logout" class="waves-effect"><i class="fa fa-sign-out fa-fw"
 																																 aria-hidden="true"></i><span class="hide-menu">Logout</span></a>
 			</li>
 			<% } else { %>
