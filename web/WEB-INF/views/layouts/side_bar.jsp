@@ -67,7 +67,7 @@
 			</li>
 			<% } else { %>
 			<li>
-				<a href="<%=contextPath%>/error" class="waves-effect"><i class="fa fa-sign-in fa-fw"
+				<a href="<%=contextPath%>/login" class="waves-effect"><i class="fa fa-sign-in fa-fw"
 																																 aria-hidden="true"></i><span class="hide-menu">Login</span></a>
 			</li>
 			<% } %>
